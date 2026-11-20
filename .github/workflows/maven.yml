@@ -1,0 +1,20 @@
+name: Q3 Archive Java
+on: [push]
+permissions:
+  contents: write
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Creation de Q3_archive_java.txt
+        run: |
+          echo "CHAOU Célim" > Q3_archive_java.txt
+          cat Q3.java >> Q3_archive_java.txt
+      - name: Commit et Push
+        run: |
+          git config --local user.email celimchaou8@gmail.com
+          git config --local user.name CelimS"
+          git add Q3_archive_java.txt
+          git commit -m "Ajout archive Q3" || exit 0
+          git push
