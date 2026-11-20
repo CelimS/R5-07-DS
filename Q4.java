@@ -1,0 +1,16 @@
+public class Q4
+{
+  public static void main(String[] args) 
+  {
+    int ligne = 4;
+    
+    for (int i = ligne; i >= 1; i--) 
+    {
+      for (int j = i; j >= 1; j--)
+      {
+        System.out.printl(j + " ");
+      }
+    }
+    System.out.printl();
+  }
+}
