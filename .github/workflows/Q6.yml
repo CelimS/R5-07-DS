@@ -1,0 +1,36 @@
+name: Q6 Archive et Diff
+on: [push]
+permissions:
+  contents: write
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Creation de Q6_archive_date.txt
+        run: cp Q6.java Q6_archive_date.txt
+      
+      - name: Creation archive et calcul des differences
+        run: |
+          PREV_FILE=$(ls -1 Q6_archive_*.txt 2>/dev/null | sort | tail -n 1)
+          DATE_STR=$(date +"%d-%m-%Y-%H%M%S")
+          NEW_FILE="Q6_archive_${DATE_STR}.txt"
+          echo "CHAOU Célim" > "$NEW_FILE"
+          cat Q6.java >> "$NEW_FILE"
+          echo "--- Statistiques wc (lignes / caractères) ---" >> "$NEW_FILE"
+          wc -l -c Q6.java >> "$NEW_FILE"
+          if [ -n "$PREV_FILE" ]; then
+          diff "$PREV_FILE" "$NEW_FILE" > Q6_diff.txt || true
+          else
+          echo "Premiere archive creee, aucun fichier precedent pour diff." >
+          Q6_diff.txt
+          fi
+          
+      - name: Commit et Push
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add Q6_archive_*.txt Q6_diff.txt
+          git commit -m "Ajout archive Q6 et diff" || exit 0
+          git push
