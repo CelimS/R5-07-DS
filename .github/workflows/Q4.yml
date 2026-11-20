@@ -4,7 +4,7 @@ permissions:
   contents: write
 jobs:
   archive:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latestb
     steps:
       - uses: actions/checkout@v4
 
