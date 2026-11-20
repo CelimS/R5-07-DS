@@ -8,8 +8,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name : Creation de Q2_archive_XYZ.txt
-        run : cp XYZ.txt Q2_archive_XYZ.txt
+      - name : copie de XYZ.txt
+        run: cp XYZ.txt Q2_archive_XYZ.txt
+        
       - name : Commit et Push
         run: 
           echo "CHAOU Célim" > Q2_archive_XYZ.txt
