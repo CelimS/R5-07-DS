@@ -14,17 +14,19 @@ jobs:
       - name: Creation archive et calcul des differences
         run: |
           PREV_FILE=$(ls -1 Q6_archive_*.txt 2>/dev/null | sort | tail -n 1)
+          
           DATE_STR=$(date +"%d-%m-%Y-%H%M%S")
           NEW_FILE="Q6_archive_${DATE_STR}.txt"
+          
           echo "CHAOU Célim" > "$NEW_FILE"
           cat Q6.java >> "$NEW_FILE"
           echo "--- Statistiques wc (lignes / caractères) ---" >> "$NEW_FILE"
           wc -l -c Q6.java >> "$NEW_FILE"
+          
           if [ -n "$PREV_FILE" ]; then
-          diff "$PREV_FILE" "$NEW_FILE" > Q6_diff.txt || true
+            diff "$PREV_FILE" "$NEW_FILE" > Q6_diff.txt || true
           else
-          echo "Premiere archive creee, aucun fichier precedent pour diff." >
-          Q6_diff.txt
+            echo "Premiere archive creee, aucun fichier precedent pour diff." > Q6_diff.txt
           fi
           
       - name: Commit et Push
