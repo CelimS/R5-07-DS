@@ -1,0 +1,19 @@
+name: Q1 Archive XYZ.txt
+on: [push]
+permissions:
+  contents: write
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Copie de XYZ.txt  
+        run: cp XYZ.txt Q1_archive_XYZ.txt
+      - name: Commit et Push
+        run: |
+          git config --local user.email celimchaou8@gmail.com
+          git config --local user.name CelimS
+          git add Q1_archive_XYZ.txt
+          git commit -m "Ajout archive Q1" || exit 0
+          git push
