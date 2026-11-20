@@ -23,7 +23,7 @@ jobs:
       - name: Commit et Push
         run: |
           git config --local user.email celimchaou8@gmail.com
-          git config --local user.name CelimS"
+          git config --local user.name CelimS
           git add Q2_archive_XYZ.txt
           git commit -m "Ajout archive Q2" || exit 0
           git push
