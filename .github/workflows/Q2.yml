@@ -1,8 +1,5 @@
 name: Q2 Archive XYZ avec taille
-on:
-  push:
-    paths:
-      - 'XYZ.txt'
+on: [push]
 permissions:
   contents: write
 jobs:
@@ -10,9 +7,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
-      - name: Creation de Q2_archive_XYZ.txt
-        run: |
+
+      - name : Creation de Q2_archive_XYZ.txt
+        run : cp XYZ.txt Q2_archive_XYZ.txt
+      - name : Commit et Push
+        run: 
           echo "CHAOU Célim" > Q2_archive_XYZ.txt
           date >> Q2_archive_XYZ.txt
           echo "--- Contenu ---" >> Q2_archive_XYZ.txt
