@@ -1,0 +1,1 @@
+CHAOU Célim date echo --- Contenu --- cat XYZ.txt echo --- Taille (octets) --- wc -c
