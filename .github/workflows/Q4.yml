@@ -7,6 +7,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - name: Creation de Q4_archive_date.txt
+        run: cp Q4.java Q4_archive_date.txt
       
       - name: Creation de Q4_archive_date.txt
         run: |
