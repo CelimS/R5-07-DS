@@ -1,0 +1,27 @@
+name: Q5 Archive Date
+on: [push]
+permissions:
+  contents: write
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Creation de Q5_archive_date.txt
+        run: cp Q5.java Q5_archive_date.txt
+      
+      - name: Creation de Q5_archive_date.txt
+        run: |
+          DATE_STR=$(date +"%d-%m-%Y")
+          FILENAME="Q5_archive_${DATE_STR}.txt"
+          echo "CHAOU Célim" > "$FILENAME"
+          cat Q5.java >> "$FILENAME"
+          
+      - name: Commit et Push
+        run: |
+          git config --local user.email celimchaou_@gmail.com
+          git config --local user.name CelimS
+          git add Q5_archive_*.txt
+          git commit -m "Ajout archive Q5" || exit 0
+          git push
