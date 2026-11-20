@@ -1,0 +1,24 @@
+name: Q4 Archive Date
+on: [push]
+permissions:
+  contents: write
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Creation de Q4_archive_date.txt
+        run: |
+          DATE_STR=$(date +"%d-%m-%Y")
+          FILENAME="Q4_archive_${DATE_STR}.txt"
+          echo "CHAOU Célim" > "$FILENAME"
+          cat Q4.java >> "$FILENAME"
+          
+      - name: Commit et Push
+        run: |
+          git config --local user.email celimchaou_@gmail.com
+          git config --local user.name CelimS
+          git add Q4_archive_*.txt
+          git commit -m "Ajout archive Q4" || exit 0
+          git push
