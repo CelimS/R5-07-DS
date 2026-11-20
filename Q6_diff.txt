@@ -1,0 +1,5 @@
+0a1
+> CHAOU Célim
+15a17,18
+> --- Statistiques wc (lignes / caractères) ---
+>  15 297 Q6.java
